@@ -105,7 +105,7 @@
  <script>
  </script>
  <body>
-   <img src="https://cdn.discordapp.com/emojis/720984944406429837.png?v=1"></img>
+   <a href="index.php"> <img src="https://cdn.discordapp.com/emojis/720984944406429837.png?v=1"></img></a>
 
    <label for="darkmode" class="switch" style="margin-left:90%;">
    <input type="checkbox" id="darkmode">
