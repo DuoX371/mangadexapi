@@ -12,6 +12,9 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
  <style>
+ html {
+  scroll-behavior: smooth;
+}
  body {
    padding: 25px;
    transition: 0.2s;
@@ -104,6 +107,25 @@
   width: 150px;
   height: 150px;
 }
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: grey;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
  </style>
  </head>
  <script>
@@ -112,6 +134,7 @@
 
    <a href="index.php"> <img class="yeet"src="https://cdn.discordapp.com/emojis/720984944406429837.png?v=1"></img></a>  < GO HOME
 
+   <button onclick="topFunction()" id="myBtn" title="Go to top">Back to Top</button>
 
    <label for="darkmode" class="switch" style="margin-left:90%;">
    <input type="checkbox" id="darkmode">
@@ -119,8 +142,12 @@
    </label>
 
    <div class="container">
-     <img src="https://reh3tgm2rs8sr.xnvda7fch4zhr.mangadex.network/NZcRzq2QdjeGfwJLbKV9kTR9qsn9qrYfOvGcyZlOluv5lLy2C_EHoYR49V0E0_6MdJXqz_3PWTw-WXOcQxUlf6rki1m97cwJiRkaK_8EFII03luKh7d126Fr5a8MJtaIOqIPuHCkcng3cWAtliN7K-XOXA7KSwnP2ce14iPjida_zadRLB-csqvodsaxhvdJ/data/3e93255d7c9555ffb7446c6d180311fe/x1-92960e62168dbbfa85b86eaaa600e13a9416f6010500c5783e615a8e607e0bca.png" width=100%>
+     <div style="text-align:center;margin-bottom: 20px;">
+       <button>Prev Chapter</button>
+       <button>Next Chapter</button>
 
+   </div>
+     <img src="https://reh3tgm2rs8sr.xnvda7fch4zhr.mangadex.network/NZcRzq2QdjeGfwJLbKV9kTR9qsn9qrYfOvGcyZlOluv5lLy2C_EHoYR49V0E0_6MdJXqz_3PWTw-WXOcQxUlf6rki1m97cwJiRkaK_8EFII03luKh7d126Fr5a8MJtaIOqIPuHCkcng3cWAtliN7K-XOXA7KSwnP2ce14iPjida_zadRLB-csqvodsaxhvdJ/data/3e93255d7c9555ffb7446c6d180311fe/x1-92960e62168dbbfa85b86eaaa600e13a9416f6010500c5783e615a8e607e0bca.png" width=100%>
    </div>
 
 
@@ -154,6 +181,26 @@
    checkbox.checked = false;
    sessionStorage.setItem("mode", "light");
  }
+
+ //Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
  </script>
 
 
