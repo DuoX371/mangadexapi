@@ -129,10 +129,12 @@ input:checked + .slider:before {
   <span class="slider round"></span>
   </label>
 
-<form class="example" action="" style="margin:auto;max-width:300px">
-  <input type="text" placeholder="Search manga.." name="manga">
+<form class="example" id="query_manga" action="mangadexapi.php" style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Search manga.." name="manga" id="manga">
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
+
+<div id="query_result"></div>
 
 <script>
 var checkbox = document.getElementById("darkmode");
