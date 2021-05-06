@@ -122,12 +122,23 @@ if(!empty($_GET['id'])){
    text-align: center;
    padding: 8px;
  }
+ .yeet{
+   width: 100px;
+   height: 100px;
+   transition: width 0.6s, height 0.6s;
+ }
+ .yeet:hover {
+  width: 150px;
+  height: 150px;
+}
  </style>
  </head>
  <script>
  </script>
  <body>
-   <a href="index.php"> <img src="https://cdn.discordapp.com/emojis/720984944406429837.png?v=1"></img></a>
+
+   <a href="index.php"> <img class="yeet"src="https://cdn.discordapp.com/emojis/720984944406429837.png?v=1"></img></a>  < GO BACK
+
 
    <label for="darkmode" class="switch" style="margin-left:90%;">
    <input type="checkbox" id="darkmode">
