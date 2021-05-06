@@ -5,8 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>MangaDex API Usage</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/js.js"></script>
 <style>
 body {
   padding: 25px;
@@ -61,11 +64,11 @@ form.example::after {
 <body>
   <img src="https://cdn.discordapp.com/emojis/720984944406429837.png?v=1"></img>
   <button onclick="myFunction()" style="margin-left:90%">Toggle dark mode</button>
-<form class="example" action="" style="margin:auto;max-width:300px">
-  <input type="text" placeholder="Search manga.." name="manga">
+<form class="example" id="query_manga" action="mangadexapi.php" style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Search manga.." name="manga" id="manga">
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
-
+<div id="query_result"></div>
 </body>
 
 <script>
