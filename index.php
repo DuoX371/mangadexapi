@@ -116,7 +116,18 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+td, th {
+  border: 1px solid #dddddd;
+  background-color: #87ceeb;
+  text-align: center;
+  padding: 8px;
+}
 </style>
 </head>
 <script>
@@ -134,7 +145,7 @@ input:checked + .slider:before {
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
 
-<div id="query_result"></div>
+<div id="query_result" style="margin-top: 10px;"></div>
 
 <script>
 var checkbox = document.getElementById("darkmode");
