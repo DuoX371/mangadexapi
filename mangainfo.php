@@ -12,6 +12,22 @@ if(!empty($_GET['id'])){
 		$altTitle .= "</p>";
 		$description = "<p>" . $result->data->attributes->description->en . "</p>";
 	}
+	$json = file_get_contents("https://api.mangadex.org/manga/{$query}/feed?limit=500");
+	$result = json_decode($json);
+	$html = "<table>";
+	if($result != ""){
+		$html .= "<tr>";
+		foreach($result->results as $results){
+			if($results->data->attributes->translatedLanguage == "en"){
+				$id = $results->data->id;
+				$hash = $results->data->attributes->hash;
+				$chapter = $results->data->attributes->chapter;
+				$html .= "<td><a href='readhere.php?chapter={$chapter}&id={$id}&hash={$hash}'>{$chapter}</a></td>";
+			}
+		}
+		$html .= "</tr>";
+	}
+	$html .= "</table>";
 }else{
 	echo "<script> window.location.replace('index.php'); </script>";
 }
@@ -142,6 +158,7 @@ if(!empty($_GET['id'])){
      <br>
      <div class="row">
        <h1>Chapter List</h1>
+	   <?php echo $html; ?>
      </div>
    </div>
 
