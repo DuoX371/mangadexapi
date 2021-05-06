@@ -142,13 +142,20 @@
    </label>
 
    <div class="container">
+     <h2>Chapter ??</h2>
      <div style="text-align:center;margin-bottom: 20px;">
        <button>Prev Chapter</button>
        <button>Next Chapter</button>
-
    </div>
+
+   <div>
      <img src="https://reh3tgm2rs8sr.xnvda7fch4zhr.mangadex.network/NZcRzq2QdjeGfwJLbKV9kTR9qsn9qrYfOvGcyZlOluv5lLy2C_EHoYR49V0E0_6MdJXqz_3PWTw-WXOcQxUlf6rki1m97cwJiRkaK_8EFII03luKh7d126Fr5a8MJtaIOqIPuHCkcng3cWAtliN7K-XOXA7KSwnP2ce14iPjida_zadRLB-csqvodsaxhvdJ/data/3e93255d7c9555ffb7446c6d180311fe/x1-92960e62168dbbfa85b86eaaa600e13a9416f6010500c5783e615a8e607e0bca.png" width=100%>
    </div>
+
+   <div style="text-align:center;margin-top: 20px;">
+     <button>Prev Chapter</button>
+     <button>Next Chapter</button>
+ </div>
 
 
 
