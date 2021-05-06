@@ -140,13 +140,12 @@ td, th {
   <span class="slider round"></span>
   </label>
 
-<form class="example" id="query_manga" action="mangadexapi.php" style="margin:auto;max-width:300px">
+<form class="example" id="query_manga" action="mangadexapi.php" style="margin:auto;max-width:300px;padding-bottom:20px;">
   <input type="text" placeholder="Search manga.." name="manga" id="manga">
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
 
-<div id="query_result" style="margin-top: 10px;"></div>
-
+<div style="text-align:center; margin-top: 10px;" id="query_result"></div>
 <script>
 var checkbox = document.getElementById("darkmode");
 if (sessionStorage.getItem("mode") == "dark") {
@@ -174,7 +173,6 @@ function nodark() {
   checkbox.checked = false;
   sessionStorage.setItem("mode", "light");
 }
-
 </script>
 
 
