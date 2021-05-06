@@ -117,7 +117,18 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+td, th {
+  border: 1px solid #dddddd;
+  background-color: #87ceeb;
+  text-align: center;
+  padding: 8px;
+}
 </style>
 </head>
 <script>
@@ -135,8 +146,7 @@ input:checked + .slider:before {
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
 
-<div style="text-align:center;" id="query_result"></div>
-
+<div style="text-align:center; margin-top: 10px;" id="query_result"></div>
 <script>
 var checkbox = document.getElementById("darkmode");
 if (sessionStorage.getItem("mode") == "dark") {
