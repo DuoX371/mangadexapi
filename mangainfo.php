@@ -1,27 +1,16 @@
 <?php
 if(!empty($_GET['id'])){
 	$query = $_GET['id'];
-	$json = file_get_contents("https://api.mangadex.org/manga?limit=100&title={$query}");
+	$json = file_get_contents("https://api.mangadex.org/manga/{$query}");
 	$result = json_decode($json);
 	if($result != ""){
-		$i = 1;
-		$html = "<table>";
-		foreach($result->results as $resultss){
-			if($i == 1){
-				$id = $resultss->data->id;
-				$html .=  "<tr><td><a href='mangainfo.php?id={$id}'>" . $resultss->data->attributes->title->en . "</a><br>(" . $resultss->data->status . ")</td>";
-			}else if($i == 2){
-				$id = $resultss->data->id;
-				$html .=  "<td><a href='mangainfo.php?id={$id}'>" . $resultss->data->attributes->title->en . "</a>(" . $resultss->data->attributes->status . ")</td>";
-			}else{
-				$id = $resultss->data->id;
-				$html .=  "<td><a href='mangainfo.php?id={$id}'>" . $resultss->data->attributes->title->en . "</a>(" . $resultss->data->attributes->status . ")</td></tr>";
-				$i = 0;
-			}
-			$i++;
+		$title = "<h1>" . $result->data->attributes->title->en . "</h1>";
+		$altTitle = "<p>";
+		foreach($result->data->attributes->altTitles as $altTitles){
+			$altTitle .= $altTitles->en . ", ";
 		}
-		$html .= "</table>";
-		echo $html;
+		$altTitle .= "</p>";
+		$description = "<p>" . $result->data->attributes->description->en . "</p>";
 	}
 }else{
 	echo "<script> window.location.replace('index.php'); </script>";
@@ -148,7 +137,7 @@ if(!empty($_GET['id'])){
    <div class="container">
      <div class="row">
        <div class="col-sm-4"><img src="https://i.imgur.com/06el6iI.png" style="max-width:90%;max-height:90%"></img></div>
-       <div class="col-sm-8">Hello!</div>
+       <div class="col-sm-8"><?php echo $title . $altTitle . $description; ?></div>
      </div>
      <br>
      <div class="row">
