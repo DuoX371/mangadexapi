@@ -128,7 +128,7 @@
        <div class="col-sm-4"><img src="https://i.imgur.com/06el6iI.png" style="max-width:90%;max-height:90%"></img></div>
        <div class="col-sm-8">Hello!</div>
      </div>
-<br>
+     <br>
      <div class="row">
        <h1>Chapter List</h1>
      </div>
