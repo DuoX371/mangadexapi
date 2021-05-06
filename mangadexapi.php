@@ -9,13 +9,13 @@ if(!empty($_POST['manga'])){
 		foreach($result->results as $resultss){
 			if($i == 1){
 				$id = $resultss->data->id;
-				$html .=  "<tr><td><a href='mangainfo.php?id={$id}'>" . $resultss->data->attributes->title->en . "</a><br>(" . $resultss->data->attributes->status . ")</td>";
+				$html .=  "<tr><td><a href='mangainfo.php?id={$id}'>" . $resultss->data->attributes->title->en . "</a><br>(Last Chapter: " . $resultss->data->attributes->lastChapter . ")</td>";
 			}else if($i == 2){
 				$id = $resultss->data->id;
-				$html .=  "<td><a href='mangainfo.php?id={$id}'>" . $resultss->data->attributes->title->en . "</a><br>(" . $resultss->data->attributes->status . ")</td>";
+				$html .=  "<td><a href='mangainfo.php?id={$id}'>" . $resultss->data->attributes->title->en . "</a><br>(Last Chapter: " . $resultss->data->attributes->lastChapter . ")</td>";
 			}else{
 				$id = $resultss->data->id;
-				$html .=  "<td><a href='mangainfo.php?id={$id}'>" . $resultss->data->attributes->title->en . "</a><br>(" . $resultss->data->attributes->status . ")</td></tr>";
+				$html .=  "<td><a href='mangainfo.php?id={$id}'>" . $resultss->data->attributes->title->en . "</a><br>(Last Chapter: " . $resultss->data->attributes->lastChapter . ")</td></tr>";
 				$i = 0;
 			}
 			$i++;
