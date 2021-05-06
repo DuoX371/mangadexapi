@@ -14,20 +14,34 @@ if(!empty($_GET['id'])){
 	}
 	$json = file_get_contents("https://api.mangadex.org/manga/{$query}/feed?limit=500");
 	$result = json_decode($json);
-	$html = "<table>";
 	if($result != ""){
-		$html .= "<tr>";
+		$i = 1;
+		$html = "<table>";
 		foreach($result->results as $results){
 			if($results->data->attributes->translatedLanguage == "en"){
-				$id = $results->data->id;
-				$hash = $results->data->attributes->hash;
-				$chapter = $results->data->attributes->chapter;
-				$html .= "<td><a href='readhere.php?chapter={$chapter}&id={$id}&hash={$hash}'>{$chapter}</a></td>";
+				if($i == 1){
+						$id = $results->data->id;
+						$hash = $results->data->attributes->hash;
+						$chapter = $results->data->attributes->chapter;
+						$html .= "<tr><td><a href='readhere.php?chapter={$chapter}&id={$id}&hash={$hash}'>{$chapter}</a></td>";
+				}else if($i > 1 && $i < 10){
+					$id = $results->data->id;
+					$hash = $results->data->attributes->hash;
+					$chapter = $results->data->attributes->chapter;
+					$html .= "<td><a href='readhere.php?chapter={$chapter}&id={$id}&hash={$hash}'>{$chapter}</a></td>";
+				}else if($i == 10){
+					$id = $results->data->id;
+					$hash = $results->data->attributes->hash;
+					$chapter = $results->data->attributes->chapter;
+					$html .= "<td><a href='readhere.php?chapter={$chapter}&id={$id}&hash={$hash}'>{$chapter}</a></td></tr>";
+					$i = 0;
+				}
+				$i++;
 			}
 		}
 		$html .= "</tr>";
+		$html .= "</table>";
 	}
-	$html .= "</table>";
 }else{
 	echo "<script> window.location.replace('index.php'); </script>";
 }
