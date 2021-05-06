@@ -59,9 +59,10 @@ form.example::after {
 </style>
 </head>
 <body>
+  <img src="https://cdn.discordapp.com/emojis/720984944406429837.png?v=1"></img>
   <button onclick="myFunction()" style="margin-left:90%">Toggle dark mode</button>
 <form class="example" action="" style="margin:auto;max-width:300px">
-  <input type="text" placeholder="Search.." name="manga">
+  <input type="text" placeholder="Search manga.." name="manga">
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
 
