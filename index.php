@@ -5,8 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>MangaDex API Usage</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/js.js"></script>
 <style>
 body {
   padding: 25px;
@@ -121,14 +124,10 @@ input:checked + .slider:before {
 <body>
   <img src="https://cdn.discordapp.com/emojis/720984944406429837.png?v=1"></img>
 
-
-
   <label for="darkmode" class="switch" style="margin-left:90%;">
   <input type="checkbox" id="darkmode">
   <span class="slider round"></span>
   </label>
-
-
 
 <form class="example" action="" style="margin:auto;max-width:300px">
   <input type="text" placeholder="Search manga.." name="manga">
