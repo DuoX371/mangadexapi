@@ -14,6 +14,7 @@
 body {
   padding: 25px;
   transition: 0.2s;
+  color:blue;
 }
 
 * {
