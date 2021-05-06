@@ -9,7 +9,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body {
-  font-family: Arial;
+  padding: 25px;
+  background-color: white;
+  color: black;
+  font-size: 25px;
+  transition: 0.5s;
 }
 
 * {
@@ -46,9 +50,16 @@ form.example::after {
   clear: both;
   display: table;
 }
+
+.dark-mode {
+  transition: 0.5s;
+  background-color: #272524;
+  color: white;
+}
 </style>
 </head>
 <body>
+  <button onclick="myFunction()" style="margin-left:90%">Toggle dark mode</button>
 <form class="example" action="" style="margin:auto;max-width:300px">
   <input type="text" placeholder="Search.." name="manga">
   <button type="submit"><i class="fa fa-search"></i></button>
@@ -56,4 +67,10 @@ form.example::after {
 
 </body>
 
-</html> 
+<script>
+function myFunction() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+</script>
+</html>
