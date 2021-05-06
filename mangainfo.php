@@ -114,7 +114,7 @@
 
    <div class="container">
      <div class="row">
-       <div class="col-sm-4"><img src=https://avt.mkklcdnv6temp.com/9/l/21-1588824887.jpg></img></div>
+       <div class="col-sm-4"><img src="https://i.imgur.com/06el6iI.png" style="max-width:90%;max-height:90%"></img></div>
        <div class="col-sm-8">Hello!</div>
      </div>
 <br>
