@@ -5,7 +5,7 @@ if(!empty($_GET['id'])){
 	$result = json_decode($json);
 	if($result != ""){
 		$title = "<h1>" . $result->data->attributes->title->en . "</h1>";
-		$altTitle = "<p>";
+		$altTitle = "<p>Alt: ";
 		foreach($result->data->attributes->altTitles as $altTitles){
 			$altTitle .= $altTitles->en . ", ";
 		}
