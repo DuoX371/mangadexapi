@@ -154,6 +154,8 @@ if(!empty($_GET['chapter']) && !empty($_GET['id'])){
 
    <div style="text-align:center;margin-top: 20px;" id="button2"></div>
 
+	<div style="text-align:center;margin-top: 20px;" id="button"></div>
+	</div>
  <script>
  var checkbox = document.getElementById("darkmode");
  if (sessionStorage.getItem("mode") == "dark") {
