@@ -20,20 +20,14 @@ if(!empty($_GET['id'])){
 		foreach($result->results as $results){
 			if($results->data->attributes->translatedLanguage == "en"){
 				if($i == 1){
-						$id = $results->data->id;
-						$hash = $results->data->attributes->hash;
 						$chapter = $results->data->attributes->chapter;
-						$html .= "<tr><td><a href='readhere.php?chapter={$chapter}&id={$id}&hash={$hash}'>{$chapter}</a></td>";
+						$html .= "<tr><td><a href='readhere.php?chapter={$chapter}&id={$query}'>{$chapter}</a></td>";
 				}else if($i > 1 && $i < 10){
-					$id = $results->data->id;
-					$hash = $results->data->attributes->hash;
 					$chapter = $results->data->attributes->chapter;
-					$html .= "<td><a href='readhere.php?chapter={$chapter}&id={$id}&hash={$hash}'>{$chapter}</a></td>";
+					$html .= "<td><a href='readhere.php?chapter={$chapter}&id={$query}'>{$chapter}</a></td>";
 				}else if($i == 10){
-					$id = $results->data->id;
-					$hash = $results->data->attributes->hash;
 					$chapter = $results->data->attributes->chapter;
-					$html .= "<td><a href='readhere.php?chapter={$chapter}&id={$id}&hash={$hash}'>{$chapter}</a></td></tr>";
+					$html .= "<td><a href='readhere.php?chapter={$chapter}&id={$query}'>{$chapter}</a></td></tr>";
 					$i = 0;
 				}
 				$i++;
@@ -41,9 +35,13 @@ if(!empty($_GET['id'])){
 		}
 		$html .= "</tr>";
 		$html .= "</table>";
+	}else{
+		echo "<script> alert('Something went wrong!'); window.location.replace('index.php'); </script>";
+		die();
 	}
 }else{
 	echo "<script> window.location.replace('index.php'); </script>";
+	die();
 }
 ?>
 

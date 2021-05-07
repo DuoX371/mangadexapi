@@ -1,6 +1,34 @@
 <?php
+if(!empty($_GET['chapter']) && !empty($_GET['id'])){
+	$chapter = $_GET['chapter'];
+	$query = $_GET['id'];
+	$json = file_get_contents("https://api.mangadex.org/manga/{$query}/feed?limit=500");
+	$result = json_decode($json);
+	if($result != ""){
+		$html = "";
+		$i = 1;
+		foreach($result->results as $results){
+			if($results->data->attributes->translatedLanguage == "en" && $results->data->attributes->chapter == $chapter){
+				$dataId = $results->data->id;
+				$hash = $results->data->attributes->hash;
+				$getServer = file_get_contents("https://api.mangadex.org/at-home/server/{$dataId}");
+				$server = json_decode($getServer);
+				foreach($results->data->attributes->data as $data){
+					$html .= "<img class='{$i}' src='{$server->baseUrl}/data/{$hash}/{$data}' width=100% style='margin-bottom: 5px;' onload='doneLoading(" . '"' . $server->baseUrl . "/data/" . $hash . "/" . $data . '",' . $i . ")'>";
+					$i++;
+				}
+			}
+		}
+		die();
+	}else{
+		echo "<script> alert('Something went wrong!'); window.location.replace('index.php'); </script>";
+		die();
+	}
+}else{
+	echo "<script> window.location.replace('index.php'); </script>"; 
+	die();
+}
 ?>
-
  <!DOCTYPE html>
  <html>
  <head>
@@ -8,7 +36,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <script src="js/js.js"></script>
+ <script src="js/jsjs.js"></script>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
  <style>
@@ -142,14 +170,14 @@
    </label>
 
    <div class="container">
-     <h2>Chapter ??</h2>
+     <h2>Chapter <?php echo $chapter; ?></h2>
      <div style="text-align:center;margin-bottom: 20px;">
        <button>Prev Chapter</button>
        <button>Next Chapter</button>
    </div>
 
    <div>
-     <img src="https://reh3tgm2rs8sr.xnvda7fch4zhr.mangadex.network/NZcRzq2QdjeGfwJLbKV9kTR9qsn9qrYfOvGcyZlOluv5lLy2C_EHoYR49V0E0_6MdJXqz_3PWTw-WXOcQxUlf6rki1m97cwJiRkaK_8EFII03luKh7d126Fr5a8MJtaIOqIPuHCkcng3cWAtliN7K-XOXA7KSwnP2ce14iPjida_zadRLB-csqvodsaxhvdJ/data/3e93255d7c9555ffb7446c6d180311fe/x1-92960e62168dbbfa85b86eaaa600e13a9416f6010500c5783e615a8e607e0bca.png" width=100%>
+     <?php echo $html; ?>
    </div>
 
    <div style="text-align:center;margin-top: 20px;">
@@ -157,10 +185,6 @@
      <button>Next Chapter</button>
  </div>
 
-
-
-
- <div style="text-align:center; margin-top: 10px;" id="query_result"></div>
  <script>
  var checkbox = document.getElementById("darkmode");
  if (sessionStorage.getItem("mode") == "dark") {
@@ -208,6 +232,12 @@ function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+//send report to mangadex
+var startTime = new Date().getTime();
+function doneLoading(e) {
+    var loadtime = new Date().getTime() - startTime;
+	console.log("image took " + loadtime + "ms to load");
+};   
  </script>
 
 
