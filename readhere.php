@@ -9,6 +9,8 @@ if(!empty($_GET['chapter']) && !empty($_GET['id'])){
 		$i = 1;
 		$k = 0;
 		$j = 0;
+		$chapter2 = 10000;
+		$chapter0 = 0;
 		foreach($result->results as $results){
 			if($results->data->attributes->translatedLanguage == "en" && $results->data->attributes->chapter == $chapter){
 				$dataId = $results->data->id;
@@ -20,16 +22,20 @@ if(!empty($_GET['chapter']) && !empty($_GET['id'])){
 					$i++;
 				}
 			}
-			$chapter2 = $chapter + 1;
-			$chapter0 = $chapter - 1;
+			if($results->data->attributes->chapter > $chapter && $results->data->attributes->chapter < $chapter2){
+				$chapter2 = $results->data->attributes->chapter;
+			}
+			if($results->data->attributes->chapter < $chapter && $results->data->attributes->chapter > $chapter0){
+				$chapter0 = $results->data->attributes->chapter;
+			}
 			if($results->data->attributes->translatedLanguage == "en" && $results->data->attributes->chapter == $chapter0){
 				//previous button
-				$buttonprev = "<button onclick='location.href= " . '"readhere.php?chapter=' . $chapter0 . '&id=' . $query . '"' . ";'>Prev Chapter</button>";
+				$buttonprev = "<button onclick='location.href= " . '"readhere.php?chapter=' . $chapter0 . '&id=' . $query . '"' . ";'>Prev Chapter ({$chapter0})</button>";
 				$j = 1;
 			}
 			if($results->data->attributes->translatedLanguage == "en" && $results->data->attributes->chapter == $chapter2){
 				//next button
-				$buttonnext = "<button onclick='location.href= " . '"readhere.php?chapter=' . $chapter2 . '&id=' . $query . '"' . ";'>Next Chapter</button>";
+				$buttonnext = "<button onclick='location.href= " . '"readhere.php?chapter=' . $chapter2 . '&id=' . $query . '"' . ";'>Next Chapter ({$chapter2})</button>";
 				$k = 1;
 			}
 		}
