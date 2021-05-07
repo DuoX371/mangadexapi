@@ -23,6 +23,7 @@ $('document').ready(function(){
 				});
 			});
 			$('#button').html(data[2]+data[1]);
+			$('#button2').html(data[2]+data[1]);
 		},
 		error: function(){
 			alert("An error occured!");

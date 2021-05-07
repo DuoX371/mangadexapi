@@ -2,7 +2,7 @@
 if(!empty($_GET['chapter']) && !empty($_GET['id'])){
 	$chapter = $_GET['chapter'];
 }else{
-	echo "<script> window.location.replace('index.php'); </script>"; 
+	echo "<script> window.location.replace('index.php'); </script>";
 	die();
 }
 ?>
@@ -152,7 +152,7 @@ if(!empty($_GET['chapter']) && !empty($_GET['id'])){
 
    <div id="imgmanga"></div>
 
-   <div style="text-align:center;margin-top: 20px;" id="button"></div>
+   <div style="text-align:center;margin-top: 20px;" id="button2"></div>
 
  <script>
  var checkbox = document.getElementById("darkmode");
