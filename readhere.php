@@ -19,7 +19,6 @@ if(!empty($_GET['chapter']) && !empty($_GET['id'])){
 				}
 			}
 		}
-		die();
 	}else{
 		echo "<script> alert('Something went wrong!'); window.location.replace('index.php'); </script>";
 		die();
