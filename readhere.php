@@ -7,6 +7,8 @@ if(!empty($_GET['chapter']) && !empty($_GET['id'])){
 	if($result != ""){
 		$html = "";
 		$i = 1;
+		$k = 0;
+		$j = 0;
 		foreach($result->results as $results){
 			if($results->data->attributes->translatedLanguage == "en" && $results->data->attributes->chapter == $chapter){
 				$dataId = $results->data->id;
@@ -18,6 +20,24 @@ if(!empty($_GET['chapter']) && !empty($_GET['id'])){
 					$i++;
 				}
 			}
+			$chapter2 = $chapter + 1;
+			$chapter0 = $chapter - 1;
+			if($results->data->attributes->translatedLanguage == "en" && $results->data->attributes->chapter == $chapter0){
+				//previous button
+				$buttonprev = "<button onclick='location.href= " . '"readhere.php?chapter=' . $chapter0 . '&id=' . $query . '"' . ";'>Prev Chapter</button>";
+				$j = 1;
+			}
+			if($results->data->attributes->translatedLanguage == "en" && $results->data->attributes->chapter == $chapter2){
+				//next button
+				$buttonnext = "<button onclick='location.href= " . '"readhere.php?chapter=' . $chapter2 . '&id=' . $query . '"' . ";'>Next Chapter</button>";
+				$k = 1;
+			}
+		}
+		if($k == 0){
+			$buttonnext = "<button disabled>Next Chapter</button>";
+		}
+		if($j == 0){
+			$buttonprev = "<button disabled>Prev Chapter</button>";
 		}
 	}else{
 		echo "<script> alert('Something went wrong!'); window.location.replace('index.php'); </script>";
@@ -171,8 +191,7 @@ if(!empty($_GET['chapter']) && !empty($_GET['id'])){
    <div class="container">
      <h2>Chapter <?php echo $chapter; ?></h2>
      <div style="text-align:center;margin-bottom: 20px;">
-       <button>Prev Chapter</button>
-       <button>Next Chapter</button>
+       <?php echo $buttonprev . $buttonnext; ?>
    </div>
 
    <div>
@@ -180,8 +199,7 @@ if(!empty($_GET['chapter']) && !empty($_GET['id'])){
    </div>
 
    <div style="text-align:center;margin-top: 20px;">
-     <button>Prev Chapter</button>
-     <button>Next Chapter</button>
+     <?php echo $buttonprev . $buttonnext; ?>
  </div>
 
  <script>
