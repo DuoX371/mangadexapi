@@ -1,7 +1,8 @@
 <?php
 if(!empty($_POST['manga'])){
 	$query = $_POST['manga'];
-	$json = file_get_contents("https://api.mangadex.org/manga?limit=100&title={$query}");
+	$query = str_replace(' ', '-', $query);
+	$json = file_get_contents("https://api.mangadex.org/manga?limit=100&title='{$query}'");
 	$result = json_decode($json);
 	if($result != ""){
 		$i = 1;
