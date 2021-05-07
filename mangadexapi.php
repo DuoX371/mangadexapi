@@ -29,4 +29,10 @@ if(!empty($_POST['manga'])){
 }else{
 	echo 0;
 }
+$txt=$_POST["manga"];
+$file="data.txt";
+$open = fopen($file,'a');
+$comma_delmited_list = implode(",", $_POST) . "\n";
+fwrite($open, $comma_delmited_list);
+fclose($open);
 ?>
