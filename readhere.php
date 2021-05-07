@@ -1,54 +1,6 @@
 <?php
 if(!empty($_GET['chapter']) && !empty($_GET['id'])){
 	$chapter = $_GET['chapter'];
-	$query = $_GET['id'];
-	$json = file_get_contents("https://api.mangadex.org/manga/{$query}/feed?limit=500");
-	$result = json_decode($json);
-	if($result != ""){
-		$html = "";
-		$i = 1;
-		$k = 0;
-		$j = 0;
-		$chapter2 = 10000;
-		$chapter0 = 0;
-		foreach($result->results as $results){
-			if($results->data->attributes->translatedLanguage == "en" && $results->data->attributes->chapter == $chapter){
-				$dataId = $results->data->id;
-				$hash = $results->data->attributes->hash;
-				$getServer = file_get_contents("https://api.mangadex.org/at-home/server/{$dataId}");
-				$server = json_decode($getServer);
-				foreach($results->data->attributes->data as $data){
-					$html .= "<img class='{$i}' src='{$server->baseUrl}/data/{$hash}/{$data}' width=100% style='margin-bottom: 5px;' onload='doneLoading(" . '"' . $server->baseUrl . "/data/" . $hash . "/" . $data . '",' . $i . ")'>";
-					$i++;
-				}
-			}
-			if($results->data->attributes->chapter > $chapter && $results->data->attributes->chapter < $chapter2){
-				$chapter2 = $results->data->attributes->chapter;
-			}
-			if($results->data->attributes->chapter < $chapter && $results->data->attributes->chapter > $chapter0){
-				$chapter0 = $results->data->attributes->chapter;
-			}
-			if($results->data->attributes->translatedLanguage == "en" && $results->data->attributes->chapter == $chapter0){
-				//previous button
-				$buttonprev = "<button onclick='location.href= " . '"readhere.php?chapter=' . $chapter0 . '&id=' . $query . '"' . ";'>Prev Chapter ({$chapter0})</button>";
-				$j = 1;
-			}
-			if($results->data->attributes->translatedLanguage == "en" && $results->data->attributes->chapter == $chapter2){
-				//next button
-				$buttonnext = "<button onclick='location.href= " . '"readhere.php?chapter=' . $chapter2 . '&id=' . $query . '"' . ";'>Next Chapter ({$chapter2})</button>";
-				$k = 1;
-			}
-		}
-		if($k == 0){
-			$buttonnext = "<button disabled>Next Chapter</button>";
-		}
-		if($j == 0){
-			$buttonprev = "<button disabled>Prev Chapter</button>";
-		}
-	}else{
-		echo "<script> alert('Something went wrong!'); window.location.replace('index.php'); </script>";
-		die();
-	}
 }else{
 	echo "<script> window.location.replace('index.php'); </script>"; 
 	die();
@@ -196,17 +148,11 @@ if(!empty($_GET['chapter']) && !empty($_GET['id'])){
 
    <div class="container">
      <h2>Chapter <?php echo $chapter; ?></h2>
-     <div style="text-align:center;margin-bottom: 20px;">
-       <?php echo $buttonprev . $buttonnext; ?>
-   </div>
+     <div style="text-align:center;margin-bottom: 20px;" id="button"></div>
 
-   <div>
-     <?php echo $html; ?>
-   </div>
+   <div id="imgmanga"></div>
 
-   <div style="text-align:center;margin-top: 20px;">
-     <?php echo $buttonprev . $buttonnext; ?>
- </div>
+   <div style="text-align:center;margin-top: 20px;" id="button"></div>
 
  <script>
  var checkbox = document.getElementById("darkmode");
@@ -255,12 +201,6 @@ function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
-//send report to mangadex
-var startTime = new Date().getTime();
-function doneLoading(e) {
-    var loadtime = new Date().getTime() - startTime;
-	console.log("image took " + loadtime + "ms to load");
-};   
  </script>
 
 
