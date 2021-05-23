@@ -20,7 +20,6 @@ $('document').ready(function(){
 		},
 		error: function(){
 			alert("An error occured!");
-			window.location.replace("index.php");
 		}
 	});
 });
