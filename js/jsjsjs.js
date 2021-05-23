@@ -13,13 +13,13 @@ $('document').ready(function(){
 			mangaurl = data;
 			console.log("Cover URL: "+mangaurl);
 			loadImgAsBase64(mangaurl, (dataURL) => {
-				   // show pic
-				   $("#mangacover").append(`<img src="${dataURL}" onerror="console.log("error")">`);
-				});
+			   // show pic
+			   $("#mangacover").append(`<img src="${dataURL}" onerror="console.log("error")">`);
 			});
-		},
+	},
 		error: function(){
 			alert("An error occured!");
+			window.location.replace("index.php");
 		}
 	});
 });
