@@ -43,7 +43,7 @@ function loadImgAsBase64(url, callback) {
 	var startTime = new Date().getTime();
 	let canvas = document.createElement('CANVAS');
 	let img = document.createElement('img');
-	//img.setAttribute('crossorigin', 'anonymous');
+	img.setAttribute('crossorigin', 'anonymous');
 	img.src = corsurl[random] + url;
 
 	img.onload = () => {
