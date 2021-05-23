@@ -43,7 +43,7 @@ function loadImgAsBase64(url, callback) {
 	var startTime = new Date().getTime();
 	let canvas = document.createElement('CANVAS');
 	let img = document.createElement('img');
-	img.setAttribute('crossorigin', 'anonymous');
+	//img.setAttribute('crossorigin', 'anonymous');
 	img.src = corsurl[random] + url;
 
 	img.onload = () => {
@@ -59,22 +59,5 @@ function loadImgAsBase64(url, callback) {
 		var head = 'data:image/png;base64,';
 		var imgFileSize = Math.round((dataURL.length - head.length)*3/4) ;
 		console.log("IMG Size: "+imgFileSize);
-		$.ajax({
-			type: "POST",
-			url: "mangadexapi.php",
-			data: {
-				"url": url,
-				"success": true,
-				"size": imgFileSize,
-				"time": loadtime
-			},
-			success: function(data){
-				console.log("if status report is {} means report has been successfully send");
-				console.log("Status Report: "+data);
-			},
-			error: function(){
-				console.log("An error occured!");
-			}
-		});
 	};
 }
