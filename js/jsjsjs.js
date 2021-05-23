@@ -7,7 +7,7 @@ $('document').ready(function(){
 		type: "POST",
 		url: "mangadexapi.php",
 		data: {
-			"id" : id
+			"id" : id,
 		},
 		success: function(data){
 			mangaurl = data;
