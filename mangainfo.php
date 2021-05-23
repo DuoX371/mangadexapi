@@ -5,7 +5,7 @@ if(!empty($_GET['id'])){
 	$json = file_get_contents("https://api.mangadex.org/cover?manga[]={$query}");
 	$result = json_decode($json);
 	if($result != ""){
-		$coverurl = "https://uploads.mangadex.org/covers/{$query}/" . $result->results[0]->data->attributes->finalName;
+		$coverurl = "https://uploads.mangadex.org/covers/{$query}/" . $result->results[0]->data->attributes->fileName;
 	}
 	//get name and alt
 	$json = file_get_contents("https://api.mangadex.org/manga/{$query}");
