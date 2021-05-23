@@ -162,7 +162,7 @@ if(!empty($_GET['id'])){
  </script>
  <body>
 
-   <a href="index.php"> <img class="yeet"src="<?php echo $coverurl; ?>"></img></a>  < GO BACK
+   <a href="index.php"> <img class="yeet"src="https://cdn.discordapp.com/emojis/720984944406429837.png?v=1"></img></a>  < GO BACK
 
 
    <label for="darkmode" class="switch" style="margin-left:90%;">
@@ -172,7 +172,7 @@ if(!empty($_GET['id'])){
 
    <div class="container">
      <div class="row">
-       <div class="col-sm-4"><img src="https://i.imgur.com/06el6iI.png" style="max-width:90%;max-height:90%"></img></div>
+       <div class="col-sm-4"><img src="<?php echo $coverurl; ?>" style="max-width:90%;max-height:90%"></img></div>
        <div class="col-sm-8"><?php echo $title . $altTitle . $description; ?></div>
      </div>
      <br>
