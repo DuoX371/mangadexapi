@@ -21,7 +21,7 @@ $('document').ready(function(){
 				i++;
 				this.loadImgAsBase64(item, (dataURL) => {
 				   // show pic
-				   $("#imgmanga").append(`<a>{i}</a><img src="${dataURL}" onerror="console.log("error")">`);
+				   $("#imgmanga").append(`<a>${i}</a><img src="${dataURL}" onerror="console.log("error")">`);
 				});
 			});
 			$('#button').html(data[2]+data[1]);
