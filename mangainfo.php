@@ -1,6 +1,13 @@
 <?php
 if(!empty($_GET['id'])){
 	$query = $_GET['id'];
+	//get coverurl
+	$json = file_get_contents("https://api.mangadex.org/cover/manga[]={$query}");
+	$result = json_decode($json);
+	if($result != ""){
+		$coverurl = "https://uploads.mangadex.org/covers/{$query}/" . $result->results[0]->data->attributes->finalName;
+	}
+	//get name and alt
 	$json = file_get_contents("https://api.mangadex.org/manga/{$query}");
 	$result = json_decode($json);
 	if($result != ""){
@@ -12,6 +19,7 @@ if(!empty($_GET['id'])){
 		$altTitle .= "</p>";
 		$description = "<p>" . $result->data->attributes->description->en . "</p>";
 	}
+	//get chapter
 	$json = file_get_contents("https://api.mangadex.org/manga/{$query}/feed?limit=500");
 	$result = json_decode($json);
 	if($result != ""){
@@ -154,7 +162,7 @@ if(!empty($_GET['id'])){
  </script>
  <body>
 
-   <a href="index.php"> <img class="yeet"src="https://cdn.discordapp.com/emojis/720984944406429837.png?v=1"></img></a>  < GO BACK
+   <a href="index.php"> <img class="yeet"src="<?php echo $coverurl; ?>"></img></a>  < GO BACK
 
 
    <label for="darkmode" class="switch" style="margin-left:90%;">
