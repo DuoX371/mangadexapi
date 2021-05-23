@@ -114,6 +114,7 @@ if(!empty($_POST['manga'])){
 	curl_close($ch);
 	echo $result;
 }else if(!empty($_POST['id'])){
+	$query = $_GET['id'];
 	//get coverurl
 	$json = file_get_contents("https://api.mangadex.org/cover?manga[]={$query}");
 	$result = json_decode($json);
