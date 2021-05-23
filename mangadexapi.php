@@ -113,6 +113,14 @@ if(!empty($_POST['manga'])){
 	}
 	curl_close($ch);
 	echo $result;
+}else if(){
+	//get coverurl
+	$json = file_get_contents("https://api.mangadex.org/cover?manga[]={$query}");
+	$result = json_decode($json);
+	if($result != ""){
+		$coverurl = "https://uploads.mangadex.org/covers/{$query}/" . $result->results[0]->data->attributes->fileName;
+	}
+	echo json_encode($coverurl);
 }else{
 	echo 0;
 }
