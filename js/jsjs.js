@@ -15,11 +15,13 @@ $('document').ready(function(){
 			"id" : id,
 		},
 		success: function(data){
+			var i = 0;
 			mangaurl = data[0];
 			mangaurl.forEach(function (item) {
+				i++;
 				this.loadImgAsBase64(item, (dataURL) => {
 				   // show pic
-				   $("#imgmanga").append(`<img src="${dataURL}" onerror="console.log("error")">`);
+				   $("#imgmanga").append(`<a>{i}</a><img src="${dataURL}" onerror="console.log("error")">`);
 				});
 			});
 			$('#button').html(data[2]+data[1]);
