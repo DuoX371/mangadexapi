@@ -3,18 +3,16 @@
 $('document').ready(function(){
 	id = findGetParameter("id");
 	console.log("Manga ID: "+id);
-	html = "";
 	$.ajax({
 		type: "POST",
 		url: "mangadexapi.php",
-		dataType: "json",
 		data: {
 			"id" : id
 		},
 		success: function(data){
-			mangaurl = data[0];
-			mangaurl.forEach(function (item) {
-				this.loadImgAsBase64(item, (dataURL) => {
+			mangaurl = data;
+			console.log("Cover URL: "+mangaurl);
+			loadImgAsBase64(mangaurl, (dataURL) => {
 				   // show pic
 				   $("#mangacover").append(`<img src="${dataURL}" onerror="console.log("error")">`);
 				});
