@@ -19,7 +19,7 @@ if(!empty($_GET['id'])){
 	if($result != ""){
 		$html = "<table>";
 		$j = 0;
-		$chaptersort = new Array();
+		$chaptersort = Array();
 		foreach($result->results as $results){
 			if($results->data->attributes->translatedLanguage == "en"){
 				$j++;
