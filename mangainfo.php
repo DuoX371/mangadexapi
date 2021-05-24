@@ -17,23 +17,39 @@ if(!empty($_GET['id'])){
 	$json = file_get_contents("https://api.mangadex.org/manga/{$query}/feed?limit=500");
 	$result = json_decode($json);
 	if($result != ""){
-		$i = 1;
 		$html = "<table>";
+		$j = 0;
 		foreach($result->results as $results){
 			if($results->data->attributes->translatedLanguage == "en"){
-				if($i == 1){
-						$chapter = $results->data->attributes->chapter;
-						$html .= "<tr><td><a href='readhere.php?chapter={$chapter}&id={$query}'>{$chapter}</a></td>";
-				}else if($i > 1 && $i < 10){
-					$chapter = $results->data->attributes->chapter;
-					$html .= "<td><a href='readhere.php?chapter={$chapter}&id={$query}'>{$chapter}</a></td>";
-				}else if($i == 10){
-					$chapter = $results->data->attributes->chapter;
-					$html .= "<td><a href='readhere.php?chapter={$chapter}&id={$query}'>{$chapter}</a></td></tr>";
-					$i = 0;
-				}
-				$i++;
+				j++;
+				$chaptersort[$j] = $results->data->attributes->chapter;
 			}
+		}
+		//sort array to acsending order
+		$length = sizeof($chaptersort)/sizeof($chaptersort[0]);
+		for (int $i = 0; $i < $length; $i++) {     
+			for (int $j = $i+1; j < $length; $j++) {     
+			   if($chaptersort[$i] > $chaptersort[$j]) {    
+				   $temp = $chaptersort[$i];    
+				   $chaptersort[$i] = $chaptersort[$j];    
+				   $chaptersort[$j] = $temp;    
+			   }     
+			}     
+		}
+		$j = 1;
+		for (int $i = 0; $i < $length; $i++) {     
+			if($j == 1){
+				$chapter = $chaptersort[$i];
+				$html .= "<tr><td><a href='readhere.php?chapter={$chapter}&id={$query}'>{$chapter}</a></td>";
+			}else if($j > 1 && $j < 10){
+				$chapter = $chaptersort[$i];
+				$html .= "<td><a href='readhere.php?chapter={$chapter}&id={$query}'>{$chapter}</a></td>";
+			}else if($j == 10){
+				$chapter = $chaptersort[$i];
+				$html .= "<td><a href='readhere.php?chapter={$chapter}&id={$query}'>{$chapter}</a></td></tr>";
+				$j = 0;
+			}
+			$j++;
 		}
 		$html .= "</tr>";
 		$html .= "</table>";
