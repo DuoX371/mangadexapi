@@ -27,8 +27,8 @@ if(!empty($_GET['id'])){
 		}
 		//sort array to acsending order
 		$length = sizeof($chaptersort)/sizeof($chaptersort[0]);
-		for (int $i = 0; $i < $length; $i++) {     
-			for (int $j = $i+1; j < $length; $j++) {     
+		for $i = 0; $i < $length; $i++) {     
+			for ($j = $i+1; j < $length; $j++) {     
 			   if($chaptersort[$i] > $chaptersort[$j]) {    
 				   $temp = $chaptersort[$i];    
 				   $chaptersort[$i] = $chaptersort[$j];    
@@ -37,7 +37,7 @@ if(!empty($_GET['id'])){
 			}     
 		}
 		$j = 1;
-		for (int $i = 0; $i < $length; $i++) {     
+		for ($i = 0; $i < $length; $i++) {     
 			if($j == 1){
 				$chapter = $chaptersort[$i];
 				$html .= "<tr><td><a href='readhere.php?chapter={$chapter}&id={$query}'>{$chapter}</a></td>";
