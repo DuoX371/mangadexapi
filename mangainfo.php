@@ -22,8 +22,8 @@ if(!empty($_GET['id'])){
 		$chaptersort = Array();
 		foreach($result->results as $results){
 			if($results->data->attributes->translatedLanguage == "en"){
-				$j++;
 				$chaptersort[$j] = $results->data->attributes->chapter;
+				$j++;
 			}
 		}
 		//sort array to acsending order
