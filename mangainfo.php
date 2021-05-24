@@ -27,7 +27,7 @@ if(!empty($_GET['id'])){
 		}
 		//sort array to acsending order
 		$length = sizeof($chaptersort)/sizeof($chaptersort[0]);
-		for $i = 0; $i < $length; $i++) {     
+		for ($i = 0; $i < $length; $i++) {     
 			for ($j = $i+1; j < $length; $j++) {     
 			   if($chaptersort[$i] > $chaptersort[$j]) {    
 				   $temp = $chaptersort[$i];    
