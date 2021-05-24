@@ -21,7 +21,7 @@ if(!empty($_GET['id'])){
 		$j = 0;
 		foreach($result->results as $results){
 			if($results->data->attributes->translatedLanguage == "en"){
-				j++;
+				$j++;
 				$chaptersort[$j] = $results->data->attributes->chapter;
 			}
 		}
